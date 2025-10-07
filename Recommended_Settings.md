@@ -443,8 +443,13 @@ pti=on
 # To prevent against L1TF, at the cost of losing hyper threading (slow).
 nosmt
 
-# Enable SLUB redzoning and sanity checking (slow; requires CONFIG_SLUB_DEBUG=y above).
+# Enable SLUB redzoning and sanity checking (`**`slow`**`; requires CONFIG_SLUB_DEBUG=y above).
+# From v5.14 through v6.16, this disables pointer hashing (see below). From v6.17 on, using
+# `hash_pointers=always` will avoid this.
 slub_debug=ZF
+
+# Since v6.17, force exposed pointers to be hashed.
+hash_pointers=always
 
 # (Before v5.3 without "init_on_free=1") Enable slub/slab allocator free poisoning (requires CONFIG_SLUB_DEBUG=y above).
 slub_debug=P
