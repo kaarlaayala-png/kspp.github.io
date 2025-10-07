@@ -35,13 +35,12 @@ anything more!
  </tbody>
 </table>
 
-
 | Version                                | Feature                                      |
 | -------------------------------------- | -------------------------------------------- |
 | v3.5                                   | seccomp-bpf, x86                             |
 | v3.7                                   | PXN, arm64                                   |
 | v3.8                                   | seccomp-bpf, arm                             |
-| seccomp reported in /proc/$pid/status  |                                              |
+| | seccomp reported in /proc/$pid/status  |                                              |
 | finit_module syscall and LSM hook     |                                              |
 | v3.13                                  | remove %n from printf                        |
 | v3.14                                  | ptdump, arm                                  |

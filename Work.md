@@ -5,8 +5,10 @@ title: Areas of Work Needed
 We have a lot of work to do! While there are already many upstream
 security features, we are still missing many more.
 
-For the list of specific items and desired features, see the
-[KSPP Issue Tracker](https://github.com/KSPP/linux/issues).
+The [Kernel Self Protection Project](/) has a lot of work to
+do! While there are already a number of upstream [kernel security features](Feature_List), we are still missing many.
+
+For the list of specific items and desired features, see the [KSPP Issue Tracker](https://github.com/KSPP/linux/issues).
 
 General concepts and concerns are here:
 
