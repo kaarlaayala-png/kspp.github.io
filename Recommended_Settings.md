@@ -60,12 +60,12 @@ CONFIG_SECCOMP_FILTER=y
 # CONFIG_LDISC_AUTOLOAD is not set
 
 # Provide userspace with ptrace ancestry protections.
-# Make sure that "yama" is also present in the "CONFIG_LSM=yama,..." list.
+# Make sure that "yama" is also present in the CONFIG_LSM="yama,..." list.
 CONFIG_SECURITY=y
 CONFIG_SECURITY_YAMA=y
 
 # Provide userspace with Landlock MAC interface.
-# Make sure that "landlock" is also present in the "CONFIG_LSM=landlock,..." list.
+# Make sure that "landlock" is also present in the CONFIG_LSM="landlock,..." list.
 CONFIG_SECURITY_LANDLOCK=y
 
 # Make sure SELinux cannot be disabled trivially.
@@ -75,6 +75,7 @@ CONFIG_SECURITY_LANDLOCK=y
 # CONFIG_SECURITY_WRITABLE_HOOKS is not set
 
 # Enable "lockdown" LSM for bright line between the root user and kernel memory.
+# Make sure that "lockdown" is also present in the CONFIG_LSM="lockdown,..." list.
 CONFIG_SECURITY_LOCKDOWN_LSM=y
 CONFIG_SECURITY_LOCKDOWN_LSM_EARLY=y
 CONFIG_LOCK_DOWN_KERNEL_FORCE_CONFIDENTIALITY=y
