@@ -422,6 +422,10 @@ CONFIG_CPU_SW_DOMAIN_PAN=y
 
 # Dangerous; old interfaces and needless additional attack surface.
 # CONFIG_OABI_COMPAT is not set
+
+# Report any dangerous memory permissions
+# (this feature is called CONFIG_DEBUG_WX on other archs).
+CONFIG_ARM_DEBUG_WX=y
 ```
 
 # kernel command line options
