@@ -319,6 +319,9 @@ CONFIG_MITIGATION_SLS=y
 CONFIG_CFI_CLANG=y
 # CONFIG_CFI_PERMISSIVE is not set
 
+# Use KCFI instead of FineIBT (see the "cfi" command line parameter below)
+# CONFIG_CFI_AUTO_DEFAULT is not set
+
 # Dangerous; enabling this disables vDSO ASLR on X86_64 and X86_32.
 # On ARM64 this option has different meaning.
 # CONFIG_COMPAT_VDSO is not set
