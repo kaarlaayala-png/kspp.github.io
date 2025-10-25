@@ -150,7 +150,7 @@ CONFIG_UBSAN_LOCAL_BOUNDS=y
 CONFIG_KFENCE=y
 CONFIG_KFENCE_SAMPLE_INTERVAL=100
 
-# Randomize kernel stack offset on syscall entry (since v5.13).
+# Randomize kernel stack offset on syscall entry (since v5.13, not all architectures support this yet).
 CONFIG_RANDOMIZE_KSTACK_OFFSET_DEFAULT=y
 
 # Do not ignore compile-time warnings (since v5.15)
