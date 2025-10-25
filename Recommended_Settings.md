@@ -264,9 +264,12 @@ CONFIG_GCC_PLUGIN_STRUCTLEAK=y
 CONFIG_GCC_PLUGIN_STRUCTLEAK_BYREF_ALL=y
 
 # Wipe stack contents on syscall exit (reduces stale data lifetime in stack)
-CONFIG_GCC_PLUGIN_STACKLEAK=y
-# CONFIG_STACKLEAK_METRICS is not set
-# CONFIG_STACKLEAK_RUNTIME_DISABLE is not set
+CONFIG_GCC_PLUGIN_STACKLEAK=y (prior to v6.17)
+# CONFIG_STACKLEAK_METRICS is not set (prior to v6.17)
+# CONFIG_STACKLEAK_RUNTIME_DISABLE is not set (prior to v6.17)
+CONFIG_KSTACK_ERASE=y (since v6.17)
+# CONFIG_KSTACK_ERASE_METRICS is not set (since v6.17)
+# CONFIG_KSTACK_ERASE_RUNTIME_DISABLE is not set (since v6.17)
 ```
 
 ## x86_64
