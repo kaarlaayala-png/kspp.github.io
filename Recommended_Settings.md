@@ -82,6 +82,7 @@ CONFIG_LOCK_DOWN_KERNEL_FORCE_CONFIDENTIALITY=y
 
 # Perform usercopy bounds checking. (And disable fallback to gain full whitelist enforcement.)
 CONFIG_HARDENED_USERCOPY=y
+CONFIG_HARDENED_USERCOPY_DEFAULT_ON=y
 # CONFIG_HARDENED_USERCOPY_FALLBACK is not set
 # CONFIG_HARDENED_USERCOPY_PAGESPAN is not set
 
