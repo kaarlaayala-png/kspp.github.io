@@ -377,9 +377,9 @@ CONFIG_CFI_CLANG=y
 ```
 # On 32-bit kernels, require PAE for NX bit support.
 # CONFIG_M486 is not set
-# CONFIG_HIGHMEM4G is not set
-CONFIG_HIGHMEM64G=y
 CONFIG_X86_PAE=y
+CONFIG_HIGHMEM64G=y (prior to v6.15)
+CONFIG_HIGHMEM4G=y (since v6.15)
 
 # Disallow allocating the first 64k of memory.
 CONFIG_DEFAULT_MMAP_MIN_ADDR=65536
