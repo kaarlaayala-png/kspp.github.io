@@ -98,7 +98,7 @@ CONFIG_RANDOM_KMALLOC_CACHES=y
 # the "page_alloc.shuffle=1" command line below).
 CONFIG_SHUFFLE_PAGE_ALLOCATOR=y
 
-# Sanity check userspace page table mappings (since v5.17)
+# Sanity check userspace page table mappings (since v5.17, not all architectures support this yet).
 CONFIG_PAGE_TABLE_CHECK=y
 CONFIG_PAGE_TABLE_CHECK_ENFORCED=y
 
