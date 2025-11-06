@@ -39,6 +39,10 @@ CONFIG_STACKPROTECTOR_STRONG=y
 CONFIG_STRICT_DEVMEM=y
 CONFIG_IO_STRICT_DEVMEM=y
 
+# Do not allow manipulation of read-only memory through /proc/$pid/mem.
+# See also "proc_mem.force_override" sysctl below.
+CONFIG_PROC_MEM_NO_FORCE=y
+
 # Provides some protections against SYN flooding.
 CONFIG_SYN_COOKIES=y
 
@@ -87,6 +91,7 @@ CONFIG_HARDENED_USERCOPY=y
 # Randomize allocator freelists, harden metadata.
 CONFIG_SLAB_FREELIST_RANDOM=y
 CONFIG_SLAB_FREELIST_HARDENED=y
+CONFIG_SLAB_BUCKETS=y
 CONFIG_RANDOM_KMALLOC_CACHES=y
 
 # Make cross-slab heap attacks not as trivial when object sizes are the same. (Same as slab_nomerge boot param.)
@@ -529,6 +534,10 @@ kernel.oops_limit = 1
 
 # Turn on BPF JIT hardening, if the JIT is enabled.
 net.core.bpf_jit_harden = 2
+
+# Disable bypassing of read-only permissions via /proc/$pid/mem.
+# To allow ptrace to do it (gdb, etc), use "...=ptrace".
+proc_mem.force_override=never
 
 # Disable dangerous userfaultfd usage.
 vm.unprivileged_userfaultfd = 0
