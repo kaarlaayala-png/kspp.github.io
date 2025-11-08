@@ -465,6 +465,10 @@ page_poison=1
 # Force IOMMU TLB invalidation so devices will never be able to access stale data contents (see CONFIG_IOMMU_DEFAULT_DMA_STRICT=y above).
 iommu.passthrough=0 iommu.strict=1
 
+# Disable bypassing of read-only permissions via /proc/$pid/mem.
+# To allow ptrace to do it (gdb, etc), use "...=ptrace".
+proc_mem.force_override=never
+
 # Mitigates all known CPU vulnerabilities, disabling SMT *if needed*.
 mitigations=auto,nosmt
 
@@ -534,10 +538,6 @@ kernel.oops_limit = 1
 
 # Turn on BPF JIT hardening, if the JIT is enabled.
 net.core.bpf_jit_harden = 2
-
-# Disable bypassing of read-only permissions via /proc/$pid/mem.
-# To allow ptrace to do it (gdb, etc), use "...=ptrace".
-proc_mem.force_override=never
 
 # Disable dangerous userfaultfd usage.
 vm.unprivileged_userfaultfd = 0
