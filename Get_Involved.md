@@ -42,7 +42,7 @@ critical this work is, they'll pay you to work on it. If not, the
 [OpenSSF](https://openssf.org/)'s [Alpha-Omega](https://alpha-omega.dev/)
 group is in a great position to fund specific work proposals. We
 need kernel developers, compiler developers, testers, backporters,
-a documentation writers.
+and documentation writers.
 
 # Contribute patches
 
