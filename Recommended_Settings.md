@@ -64,12 +64,12 @@ CONFIG_SECCOMP_FILTER=y
 # CONFIG_LDISC_AUTOLOAD is not set
 
 # Provide userspace with ptrace ancestry protections.
-# Make sure that "yama" is also present in the "CONFIG_LSM=yama,..." list.
+# Make sure that "yama" is also present in the CONFIG_LSM="yama,..." list.
 CONFIG_SECURITY=y
 CONFIG_SECURITY_YAMA=y
 
 # Provide userspace with Landlock MAC interface.
-# Make sure that "landlock" is also present in the "CONFIG_LSM=landlock,..." list.
+# Make sure that "landlock" is also present in the CONFIG_LSM="landlock,..." list.
 CONFIG_SECURITY_LANDLOCK=y
 
 # Make sure SELinux cannot be disabled trivially.
@@ -79,12 +79,14 @@ CONFIG_SECURITY_LANDLOCK=y
 # CONFIG_SECURITY_WRITABLE_HOOKS is not set
 
 # Enable "lockdown" LSM for bright line between the root user and kernel memory.
+# Make sure that "lockdown" is also present in the CONFIG_LSM="lockdown,..." list.
 CONFIG_SECURITY_LOCKDOWN_LSM=y
 CONFIG_SECURITY_LOCKDOWN_LSM_EARLY=y
 CONFIG_LOCK_DOWN_KERNEL_FORCE_CONFIDENTIALITY=y
 
 # Perform usercopy bounds checking. (And disable fallback to gain full whitelist enforcement.)
 CONFIG_HARDENED_USERCOPY=y
+CONFIG_HARDENED_USERCOPY_DEFAULT_ON=y
 # CONFIG_HARDENED_USERCOPY_FALLBACK is not set
 # CONFIG_HARDENED_USERCOPY_PAGESPAN is not set
 
@@ -101,7 +103,7 @@ CONFIG_RANDOM_KMALLOC_CACHES=y
 # the "page_alloc.shuffle=1" command line below).
 CONFIG_SHUFFLE_PAGE_ALLOCATOR=y
 
-# Sanity check userspace page table mappings (since v5.17)
+# Sanity check userspace page table mappings (since v5.17, not all architectures support this yet).
 CONFIG_PAGE_TABLE_CHECK=y
 CONFIG_PAGE_TABLE_CHECK_ENFORCED=y
 
@@ -143,6 +145,7 @@ CONFIG_UBSAN_SANITIZE_ALL=y
 # CONFIG_UBSAN_DIV_ZERO is not set
 # CONFIG_UBSAN_UNREACHABLE is not set
 # CONFIG_UBSAN_SIGNED_WRAP is not set
+# CONFIG_UBSAN_INTEGER_WRAP is not set
 # CONFIG_UBSAN_BOOL is not set
 # CONFIG_UBSAN_ENUM is not set
 # CONFIG_UBSAN_ALIGNMENT is not set
@@ -153,7 +156,7 @@ CONFIG_UBSAN_LOCAL_BOUNDS=y
 CONFIG_KFENCE=y
 CONFIG_KFENCE_SAMPLE_INTERVAL=100
 
-# Randomize kernel stack offset on syscall entry (since v5.13).
+# Randomize kernel stack offset on syscall entry (since v5.13, not all architectures support this yet).
 CONFIG_RANDOMIZE_KSTACK_OFFSET_DEFAULT=y
 
 # Do not ignore compile-time warnings (since v5.15)
@@ -267,9 +270,12 @@ CONFIG_GCC_PLUGIN_STRUCTLEAK=y
 CONFIG_GCC_PLUGIN_STRUCTLEAK_BYREF_ALL=y
 
 # Wipe stack contents on syscall exit (reduces stale data lifetime in stack)
-CONFIG_GCC_PLUGIN_STACKLEAK=y
-# CONFIG_STACKLEAK_METRICS is not set
-# CONFIG_STACKLEAK_RUNTIME_DISABLE is not set
+CONFIG_GCC_PLUGIN_STACKLEAK=y (prior to v6.17)
+# CONFIG_STACKLEAK_METRICS is not set (prior to v6.17)
+# CONFIG_STACKLEAK_RUNTIME_DISABLE is not set (prior to v6.17)
+CONFIG_KSTACK_ERASE=y (since v6.17)
+# CONFIG_KSTACK_ERASE_METRICS is not set (since v6.17)
+# CONFIG_KSTACK_ERASE_RUNTIME_DISABLE is not set (since v6.17)
 ```
 
 ## x86_64
@@ -321,6 +327,9 @@ CONFIG_MITIGATION_SLS=y
 # Enable Control Flow Integrity (since v6.1).
 CONFIG_CFI_CLANG=y
 # CONFIG_CFI_PERMISSIVE is not set
+
+# Use KCFI instead of FineIBT (see the "cfi" command line parameter below)
+# CONFIG_CFI_AUTO_DEFAULT is not set
 
 # Dangerous; enabling this disables vDSO ASLR on X86_64 and X86_32.
 # On ARM64 this option has different meaning.
@@ -374,9 +383,9 @@ CONFIG_CFI_CLANG=y
 ```
 # On 32-bit kernels, require PAE for NX bit support.
 # CONFIG_M486 is not set
-# CONFIG_HIGHMEM4G is not set
-CONFIG_HIGHMEM64G=y
 CONFIG_X86_PAE=y
+CONFIG_HIGHMEM64G=y (prior to v6.15)
+CONFIG_HIGHMEM4G=y (since v6.15)
 
 # Disallow allocating the first 64k of memory.
 CONFIG_DEFAULT_MMAP_MIN_ADDR=65536
@@ -419,6 +428,10 @@ CONFIG_CPU_SW_DOMAIN_PAN=y
 
 # Dangerous; old interfaces and needless additional attack surface.
 # CONFIG_OABI_COMPAT is not set
+
+# Report any dangerous memory permissions
+# (this feature is called CONFIG_DEBUG_WX on other archs).
+CONFIG_ARM_DEBUG_WX=y
 ```
 
 # kernel command line options
